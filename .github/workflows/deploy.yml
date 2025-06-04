@@ -1,34 +1,27 @@
-﻿name: Deploy Flask App to Heroku
+name: Deploy to Render
 
 on:
   push:
-    branches: [master] # Change to 'main' if you're using that branch
+    branches: [ main ]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
+      - name: Notify Render of new deployment
         run: |
-          pip install pytest
-          pytest || echo "No tests found, skipping..."
-
-      - name: Deploy to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          git remote add heroku https://git.heroku.com/flask-ml-app.git
-          git push heroku master
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
