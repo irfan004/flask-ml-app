@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result Page</h1>
+    <h2>Original Image</h2>
+    <img src="{{ original_image }}" alt="Original Image" width="400">
+
+    <h2>Segmented Image</h2>
+    <img src="{{ segmented_image }}" alt="Segmented Image" width="400">
+
+    <h2>Diagnosis Grade</h2>
+    <p>Grade: {{ grade }} - {{ grade_name }}</p>
+
+    <h2>Advice</h2>
+    <p>{{ advice }}</p>
+
+    <h2>Download PDF Report</h2>
+    <a href="{{ pdf_url }}" download>Download Report</a>
+</body>
+</html>

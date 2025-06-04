@@ -1,0 +1,30 @@
+# Python-specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+
+# ML model files (large files)
+models/cls/*.keras
+models/seg/*.keras
+
+# Generated files from your app
+static/uploads/*
+static/results/*
+static/pdfs/*
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
